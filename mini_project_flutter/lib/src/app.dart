@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+import 'package:mini_project_flutter/src/screens/home/home_screen.dart';
+import 'package:mini_project_flutter/src/screens/home/navbar/home_navbar.dart';
+import 'package:mini_project_flutter/src/screens/news/news_screen.dart';
+import 'package:mini_project_flutter/src/screens/news/news_view_model.dart';
+import 'package:mini_project_flutter/src/screens/sports/sport_type_screen.dart';
+import 'package:mini_project_flutter/src/screens/sports/sport_type_view_model.dart';
+
+import 'package:provider/provider.dart';
+
+class App extends StatelessWidget {
+  const App({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => SportViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => NewsViewModel(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.cyan,
+          useMaterial3: true,
+        ),
+        initialRoute: HomeNavbar.route,
+        routes: {
+          HomeNavbar.route: (context) => const HomeNavbar(),
+          NewsScreen.route: (context) => const NewsScreen(),
+          SportTypeScreen.route: (context) => const SportTypeScreen(),
+          HomeScreen.route: (context) => const HomeScreen(),
+        },
+      ),
+    );
+  }
+}

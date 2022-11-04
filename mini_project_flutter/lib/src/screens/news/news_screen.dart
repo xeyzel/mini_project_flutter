@@ -1,0 +1,54 @@
+import 'package:flutter/material.dart';
+import 'package:mini_project_flutter/src/screens/news/news_view_model.dart';
+import 'package:mini_project_flutter/src/screens/widget/drawer_max.dart';
+import 'package:mini_project_flutter/src/screens/widget/list_news.dart';
+import 'package:mini_project_flutter/src/screens/widget/status/error_max.dart';
+import 'package:mini_project_flutter/src/screens/widget/status/loading_max.dart';
+import 'package:provider/provider.dart';
+
+class NewsScreen extends StatefulWidget {
+  static const route = '/news';
+  const NewsScreen({super.key});
+
+  @override
+  State<NewsScreen> createState() => _NewsScreenState();
+}
+
+class _NewsScreenState extends State<NewsScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        actions: [
+          Builder(
+            builder: (context) => IconButton(
+              icon: const Icon(Icons.sports_outlined),
+              onPressed: () => Scaffold.of(context).openEndDrawer(),
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            ),
+          ),
+        ],
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: const Text('X-Sport'),
+      ),
+      endDrawer: const DrawerMax(),
+      body: Builder(builder: (context) {
+        return Consumer<NewsViewModel>(
+          builder: (context, value, child) {
+            switch (value.state) {
+              case ActionState.loading:
+                return const LoadingMax();
+
+              case ActionState.none:
+                return ListNews(sportNews: value.sportNews);
+
+              case ActionState.error:
+                return const ErrorMax();
+            }
+          },
+        );
+      }),
+    );
+  }
+}
