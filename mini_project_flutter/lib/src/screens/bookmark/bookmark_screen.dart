@@ -1,8 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:mini_project_flutter/src/screens/sports/setting/setting.dart';
+import 'package:mini_project_flutter/src/models/news/bookmark_model.dart';
+import 'package:mini_project_flutter/src/screens/bookmark/bookmark_view_model.dart';
+import 'package:mini_project_flutter/src/screens/widget/drawer_max.dart';
+import 'package:provider/provider.dart';
 
-class BookmarkScreen extends StatelessWidget {
+class BookmarkScreen extends StatefulWidget {
   const BookmarkScreen({super.key});
+
+  @override
+  State<BookmarkScreen> createState() => _BookmarkScreenState();
+}
+
+class _BookmarkScreenState extends State<BookmarkScreen> {
+  void _initial() {
+    context.read<BookmarkViewModel>().getNews();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _initial();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +42,48 @@ class BookmarkScreen extends StatelessWidget {
         title: const Text('X-Sport'),
       ),
       endDrawer: const DrawerMax(),
-      body: const Center(
-        child: Text('THIS WILL BE BOOKMARK SCREEN'),
+      body: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Consumer<BookmarkViewModel>(
+          builder: (context, value, child) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text('Bookmark'),
+                _bookMarkList(value.news),
+              ],
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _bookMarkList(Iterable<BookmarkModel> bookmark) {
+    return Expanded(
+      child: ListView.separated(
+        shrinkWrap: true,
+        padding: EdgeInsets.zero,
+        itemBuilder: (context, index) {
+          final mark = bookmark.elementAt(index);
+          return ListTile(
+            title: Text(mark.title),
+            subtitle: Text(
+              mark.description,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            trailing: IconButton(
+              icon: const Icon(
+                Icons.delete,
+                color: Colors.red,
+              ),
+              onPressed: () {},
+            ),
+          );
+        },
+        separatorBuilder: (context, index) => const Divider(),
+        itemCount: bookmark.length,
       ),
     );
   }

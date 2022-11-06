@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mini_project_flutter/src/models/news/bookmark_news_model.dart';
+import 'package:mini_project_flutter/src/models/news/bookmark_model.dart';
 import 'package:mini_project_flutter/src/models/news/news_model.dart';
 import 'package:mini_project_flutter/src/screens/bookmark/bookmark_view_model.dart';
 import 'package:mini_project_flutter/src/screens/news/news_view_model.dart';
@@ -17,6 +17,8 @@ class ListNews extends StatefulWidget {
 }
 
 class _ListNewsState extends State<ListNews> {
+  bool isAdd = true;
+
   @override
   Widget build(BuildContext context) {
     return Consumer<NewsViewModel>(builder: (context, value, child) {
@@ -38,7 +40,7 @@ class _ListNewsState extends State<ListNews> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomTag(
-                      backgroundColor: Colors.white.withAlpha(150),
+                      backgroundColor: Colors.grey.withAlpha(200),
                       children: [
                         Text(
                           news.source.name,
@@ -47,7 +49,7 @@ class _ListNewsState extends State<ListNews> {
                     ),
                     IconButton(
                       onPressed: () async {
-                        final markNews = BookmarkNewsModel(
+                        final markNews = BookmarkModel(
                           author: news.author,
                           description: news.description,
                           title: news.title,
@@ -58,6 +60,15 @@ class _ListNewsState extends State<ListNews> {
                             .createNews(markNews);
                         if (affectedRows != 1) return;
                         print(affectedRows);
+
+                        final snackBar = SnackBar(
+                          content: const Text('Bookmark Added'),
+                          action: SnackBarAction(
+                            label: 'Close',
+                            onPressed: () {},
+                          ),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       },
                       icon: Icon(
                         Icons.bookmark_add,

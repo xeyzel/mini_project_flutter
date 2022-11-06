@@ -1,5 +1,5 @@
 import 'package:mini_project_flutter/src/database/db_sqlite.dart';
-import 'package:mini_project_flutter/src/models/news/bookmark_news_model.dart';
+import 'package:mini_project_flutter/src/models/news/bookmark_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 class NewsTableService {
@@ -8,7 +8,7 @@ class NewsTableService {
 
   NewsTableService(this._dbSqlite);
 
-  Future<int> createNews(BookmarkNewsModel newsModel) async {
+  Future<int> createNews(BookmarkModel newsModel) async {
     try {
       final db = await _dbSqlite.db;
       await db.insert(
@@ -22,11 +22,11 @@ class NewsTableService {
     }
   }
 
-  Future<Iterable<BookmarkNewsModel>> getNews() async {
+  Future<Iterable<BookmarkModel>> getNews() async {
     try {
       final db = await _dbSqlite.db;
       final rawNews = await db.query(_newsTable);
-      final news = rawNews.map((news) => BookmarkNewsModel.fromMap(news));
+      final news = rawNews.map((news) => BookmarkModel.fromMap(news));
       return news;
     } catch (e) {
       rethrow;

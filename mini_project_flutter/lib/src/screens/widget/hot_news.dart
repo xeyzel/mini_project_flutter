@@ -29,125 +29,81 @@ class HotNews extends StatelessWidget {
             return ImageContainer(
               height: MediaQuery.of(context).size.height * 0.30,
               width: double.infinity,
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(10),
               imageUrl: news.urlToImage,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomTag(
-                    backgroundColor: Colors.red.withAlpha(150),
+                    backgroundColor: Colors.redAccent.withAlpha(180),
                     children: [
                       Text(
                         news.source.name,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                     ],
                   ),
                   const SizedBox(height: 10),
-                  Text(
-                    news.title,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      height: 1.3,
-                      fontSize: 18,
-                      color: Colors.white,
-                      shadows: [
-                        Shadow(
-                            offset: Offset(-1.5, -1.5), color: Colors.black26),
-                        Shadow(
-                          offset: Offset(1.5, -1.5),
-                          color: Colors.black26,
-                        ),
-                        Shadow(
-                          offset: Offset(1.5, 1.5),
-                          color: Colors.black26,
-                        ),
-                        Shadow(
-                          offset: Offset(-1.5, 1.5),
-                          color: Colors.black26,
-                        ),
-                      ],
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () async {
-                      context.read<NewsViewModel>().selectedNews(news);
-                      Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                          transitionsBuilder:
-                              (context, animation, secondaryAnimation, child) {
-                            return SlideTransition(
-                              position: animation.drive(
-                                Tween(
-                                    begin: const Offset(1.0, 0.0),
-                                    end: Offset.zero),
-                              ),
-                              child: child,
-                            );
-                          },
-                          pageBuilder:
-                              (context, animation, secondaryAnimation) {
-                            return const NewsWebViewScreen();
-                          },
-                        ),
-                      );
-                    },
-                    style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        Text(
-                          'Pelajari Lebih lanjut',
-                          style: TextStyle(
-                            color: Colors.white,
-                            shadows: [
-                              Shadow(
-                                offset: Offset(-1.5, -1.5),
-                                color: Colors.black26,
-                              ),
-                              Shadow(
-                                offset: Offset(1.5, -1.5),
-                                color: Colors.black26,
-                              ),
-                              Shadow(
-                                offset: Offset(1.5, 1.5),
-                                color: Colors.black26,
-                              ),
-                              Shadow(
-                                offset: Offset(-1.5, 1.5),
-                                color: Colors.black26,
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        Icon(
-                          Icons.keyboard_double_arrow_right,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        news.title,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          height: 1.3,
+                          fontSize: 18,
                           color: Colors.white,
-                          shadows: [
-                            Shadow(
-                              offset: Offset(-1.5, -1.5),
-                              color: Colors.black26,
+                          shadows: newShadows,
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () async {
+                          context.read<NewsViewModel>().selectedNews(news);
+                          Navigator.push(
+                            context,
+                            PageRouteBuilder(
+                              transitionsBuilder: (context, animation,
+                                  secondaryAnimation, child) {
+                                return SlideTransition(
+                                  position: animation.drive(
+                                    Tween(
+                                        begin: const Offset(1.0, 0.0),
+                                        end: Offset.zero),
+                                  ),
+                                  child: child,
+                                );
+                              },
+                              pageBuilder:
+                                  (context, animation, secondaryAnimation) {
+                                return const NewsWebViewScreen();
+                              },
                             ),
-                            Shadow(
-                              offset: Offset(1.5, -1.5),
-                              color: Colors.black26,
+                          );
+                        },
+                        style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              'Pelajari Lebih lanjut',
+                              style: TextStyle(
+                                color: Colors.white,
+                                shadows: newShadows,
+                              ),
                             ),
-                            Shadow(
-                              offset: Offset(1.5, 1.5),
-                              color: Colors.black26,
-                            ),
-                            Shadow(
-                              offset: Offset(-1.5, 1.5),
-                              color: Colors.black26,
+                            const SizedBox(width: 15),
+                            Icon(
+                              Icons.keyboard_double_arrow_right,
+                              color: Colors.white,
+                              shadows: newShadows,
                             ),
                           ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -156,5 +112,26 @@ class HotNews extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  List<Shadow> get newShadows {
+    return [
+      const Shadow(
+        offset: Offset(-1.5, -1.5),
+        color: Colors.black26,
+      ),
+      const Shadow(
+        offset: Offset(1.5, -1.5),
+        color: Colors.black26,
+      ),
+      const Shadow(
+        offset: Offset(1.5, 1.5),
+        color: Colors.black26,
+      ),
+      const Shadow(
+        offset: Offset(-1.5, 1.5),
+        color: Colors.black26,
+      ),
+    ];
   }
 }

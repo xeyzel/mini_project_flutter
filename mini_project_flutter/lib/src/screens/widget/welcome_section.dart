@@ -3,11 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:mini_project_flutter/src/models/news/news_model.dart';
 import 'package:mini_project_flutter/src/screens/detail/detail_news_web_view.dart';
+import 'package:mini_project_flutter/src/screens/news/news_screen.dart';
 import 'dart:math';
 import 'package:mini_project_flutter/src/screens/news/news_view_model.dart';
 
 import 'package:mini_project_flutter/src/screens/widget/components/image_container.dart';
 import 'package:mini_project_flutter/src/screens/widget/hot_news.dart';
+import 'package:mini_project_flutter/src/screens/widget/list_news.dart';
 import 'package:provider/provider.dart';
 
 class WelcomeSection extends StatefulWidget {
@@ -52,6 +54,7 @@ class _WelcomeSectionState extends State<WelcomeSection> {
   Widget build(BuildContext context) {
     return Consumer<NewsViewModel>(
       builder: (context, value, child) {
+        final newsPage = widget.sportNews.elementAt(newsIndex);
         return ListView(
           physics: const BouncingScrollPhysics(),
           children: [
@@ -71,7 +74,28 @@ class _WelcomeSectionState extends State<WelcomeSection> {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<NewsViewModel>().selectedNews(newsPage);
+                    Navigator.push(
+                      context,
+                      PageRouteBuilder(
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                          return SlideTransition(
+                            position: animation.drive(
+                              Tween(
+                                  begin: const Offset(1.0, 0.0),
+                                  end: Offset.zero),
+                            ),
+                            child: child,
+                          );
+                        },
+                        pageBuilder: (context, animation, secondaryAnimation) {
+                          return const NewsScreen();
+                        },
+                      ),
+                    );
+                  },
                   child: const Text('Lihat'),
                 ),
               ],

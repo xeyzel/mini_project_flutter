@@ -1,18 +1,18 @@
-class BookmarkNewsModel {
+class BookmarkModel {
   String author;
   String url;
   String title;
   String description;
 
-  BookmarkNewsModel({
+  BookmarkModel({
     required this.author,
     required this.description,
     required this.title,
     required this.url,
   });
 
-  factory BookmarkNewsModel.fromMap(Map<String, dynamic> data) {
-    return BookmarkNewsModel(
+  factory BookmarkModel.fromMap(Map<String, dynamic> data) {
+    return BookmarkModel(
       author: data['author'],
       description: data['description'],
       title: data['title'],

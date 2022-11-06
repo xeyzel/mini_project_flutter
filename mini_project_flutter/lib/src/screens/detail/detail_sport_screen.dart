@@ -1,8 +1,5 @@
-import 'dart:ffi';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:mini_project_flutter/src/services/sqflite_service.dart';
 import 'package:provider/provider.dart';
 
 import '../sports/sport_type_view_model.dart';
@@ -15,8 +12,6 @@ class DetailSportScreen extends StatefulWidget {
 }
 
 class _DetailSportScreenState extends State<DetailSportScreen> {
-  // SqfliteDatabase sqfliteDatabase = SqfliteDatabase();
-  bool isBig = false;
   @override
   Widget build(BuildContext context) {
     final listSport = Provider.of<SportViewModel>(context, listen: false);
@@ -57,7 +52,7 @@ class _DetailSportScreenState extends State<DetailSportScreen> {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.all(20.0),
                 child: Column(
                   children: [
                     Row(

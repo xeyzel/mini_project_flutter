@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mini_project_flutter/src/screens/bookmark/bookmark_view_model.dart';
 import 'package:mini_project_flutter/src/screens/home/home_screen.dart';
-import 'package:mini_project_flutter/src/screens/home/navbar/home_navbar.dart';
+import 'package:mini_project_flutter/src/screens/home/navbar_setter/home_navbar.dart';
+import 'package:mini_project_flutter/src/screens/home/navbar_setter/navbar_view_model.dart';
 import 'package:mini_project_flutter/src/screens/news/news_screen.dart';
 import 'package:mini_project_flutter/src/screens/news/news_view_model.dart';
 import 'package:mini_project_flutter/src/screens/sports/sport_type_screen.dart';
@@ -21,6 +23,12 @@ class App extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => NewsViewModel(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => BookmarkViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => NavbarViewModel(),
+        )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

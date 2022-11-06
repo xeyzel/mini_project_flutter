@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mini_project_flutter/src/database/db_sqlite.dart';
-import 'package:mini_project_flutter/src/models/news/bookmark_news_model.dart';
+import 'package:mini_project_flutter/src/models/news/bookmark_model.dart';
 
 import 'package:mini_project_flutter/src/services/news_table_service.dart';
 import 'package:sqflite/sqflite.dart';
@@ -20,7 +20,7 @@ void main() {
       test(
         'Create News',
         () async {
-          final news = BookmarkNewsModel(
+          final news = BookmarkModel(
             author: 'EXAZOR',
             description: 'this is description',
             title: 'this is title',
