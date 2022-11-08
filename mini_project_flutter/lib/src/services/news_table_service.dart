@@ -1,5 +1,5 @@
 import 'package:mini_project_flutter/src/database/db_sqlite.dart';
-import 'package:mini_project_flutter/src/models/news/bookmark_model.dart';
+import 'package:mini_project_flutter/src/models/bookmark/bookmark_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 class NewsTableService {

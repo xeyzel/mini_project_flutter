@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mini_project_flutter/src/models/news/bookmark_model.dart';
+import 'package:mini_project_flutter/src/models/bookmark/bookmark_model.dart';
 import 'package:mini_project_flutter/src/models/news/news_model.dart';
 import 'package:mini_project_flutter/src/screens/bookmark/bookmark_view_model.dart';
 import 'package:mini_project_flutter/src/screens/news/news_view_model.dart';
@@ -17,7 +17,7 @@ class ListNews extends StatefulWidget {
 }
 
 class _ListNewsState extends State<ListNews> {
-  bool isAdd = true;
+  bool isAdd = false;
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,7 @@ class _ListNewsState extends State<ListNews> {
                         print(affectedRows);
 
                         final snackBar = SnackBar(
-                          content: const Text('Bookmark Added'),
+                          content: const Text('Article Saved'),
                           action: SnackBarAction(
                             label: 'Close',
                             onPressed: () {},

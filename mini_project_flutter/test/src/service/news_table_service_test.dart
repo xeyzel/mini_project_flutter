@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mini_project_flutter/src/database/db_sqlite.dart';
-import 'package:mini_project_flutter/src/models/news/bookmark_model.dart';
+import 'package:mini_project_flutter/src/models/bookmark/bookmark_model.dart';
 
 import 'package:mini_project_flutter/src/services/news_table_service.dart';
 import 'package:sqflite/sqflite.dart';

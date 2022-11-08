@@ -21,12 +21,13 @@ class BookmarkModel {
   }
 
   Map<String, dynamic> toMap() {
-    return {
-      'author': author,
-      'url': url,
-      'title': title,
-      'description': description,
-    };
+    final map = <String, dynamic>{};
+    map['author'] = author;
+    map['url'] = url;
+    map['title'] = title;
+    map['description'] = description;
+
+    return map;
   }
 
   @override

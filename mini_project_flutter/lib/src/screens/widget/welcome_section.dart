@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:mini_project_flutter/src/models/news/news_model.dart';
 import 'package:mini_project_flutter/src/screens/detail/detail_news_web_view.dart';
+import 'package:mini_project_flutter/src/screens/home/navbar_setter/home_navbar.dart';
 import 'package:mini_project_flutter/src/screens/news/news_screen.dart';
 import 'dart:math';
 import 'package:mini_project_flutter/src/screens/news/news_view_model.dart';
@@ -76,6 +77,7 @@ class _WelcomeSectionState extends State<WelcomeSection> {
                 TextButton(
                   onPressed: () {
                     context.read<NewsViewModel>().selectedNews(newsPage);
+
                     Navigator.push(
                       context,
                       PageRouteBuilder(

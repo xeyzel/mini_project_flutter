@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_project_flutter/src/models/sport/sport_model.dart';
 import 'package:mini_project_flutter/src/screens/detail/detail_sport_screen.dart';
+import 'package:mini_project_flutter/src/screens/sports/setting/setting.dart';
 import 'package:mini_project_flutter/src/screens/sports/sport_type_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -44,12 +45,12 @@ class ListSports extends StatelessWidget {
                 imageUrl: sport.strSportThumb,
                 errorWidget: (context, url, error) {
                   return Image.asset(
-                    'assets/image_01.jpg',
+                    'assets/images/image_01.jpg',
                     fit: BoxFit.cover,
                   );
                 },
                 placeholder: (context, url) {
-                  return const CircularProgressIndicator();
+                  return const LoadingMax();
                 },
                 width: 60,
                 height: 60,

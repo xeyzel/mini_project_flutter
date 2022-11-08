@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 import '../sports/sport_type_view_model.dart';
@@ -30,7 +31,7 @@ class _DetailSportScreenState extends State<DetailSportScreen> {
                 imageUrl: listSport.sport!.strSportThumb,
                 errorWidget: (context, url, error) {
                   return Image.asset(
-                    'assets/image_01.jpg',
+                    'assets/images/image_01.jpg',
                     fit: BoxFit.cover,
                   );
                 },
@@ -62,13 +63,12 @@ class _DetailSportScreenState extends State<DetailSportScreen> {
                           listSport.sport!.strSport,
                           style: const TextStyle(fontSize: 30),
                         ),
-                        IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.bookmark_add,
-                              color: Colors.amber,
-                              size: 35,
-                            ))
+                        SizedBox(
+                          width: 80,
+                          child: Lottie.asset(
+                            'assets/icons/education.json',
+                          ),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 16),

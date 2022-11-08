@@ -17,7 +17,7 @@ class HomeNavbar extends StatefulWidget {
 }
 
 class _HomeNavbarState extends State<HomeNavbar> {
-  int _selectedIndex = 0;
+  // int _selectedIndex = 0;
 
   void _onItemTap(int index) {
     context.read<NavbarViewModel>().tapIndex(index);
