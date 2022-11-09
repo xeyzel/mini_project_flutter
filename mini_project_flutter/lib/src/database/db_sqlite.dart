@@ -18,7 +18,7 @@ class DbSqlite {
 
   initialDatabase() async {
     String databasePath = await getDatabasesPath();
-    String path = join(databasePath, 'play_ground_v2.db');
+    String path = join(databasePath, 'play_ground_v4.db');
     Database myDatabase = await openDatabase(
       path,
       version: 1,
@@ -31,10 +31,12 @@ class DbSqlite {
     await db.execute(
       '''
         CREATE TABLE $tableNews(
+          idFromTable INTEGER PRIMARY KEY AUTOINCREMENT,
           author TEXT ,
           title TEXT ,
           description TEXT ,
-          url TEXT 
+          url TEXT ,
+          note TEXT 
         )
       ''',
     );

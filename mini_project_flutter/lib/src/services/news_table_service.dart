@@ -8,12 +8,12 @@ class NewsTableService {
 
   NewsTableService(this._dbSqlite);
 
-  Future<int> createNews(BookmarkModel newsModel) async {
+  Future<int> createNote(BookmarkModel bookmarkModel) async {
     try {
       final db = await _dbSqlite.db;
       await db.insert(
         _newsTable,
-        newsModel.toMap(),
+        bookmarkModel.toMap(),
         conflictAlgorithm: ConflictAlgorithm.fail,
       );
       return 1;
@@ -26,20 +26,37 @@ class NewsTableService {
     try {
       final db = await _dbSqlite.db;
       final rawNews = await db.query(_newsTable);
-      final news = rawNews.map((news) => BookmarkModel.fromMap(news));
+      final news = rawNews.map((news) => BookmarkModel.fromMapWithId(news));
       return news;
     } catch (e) {
       rethrow;
     }
   }
 
-  Future<int> deleteNews(String title) async {
+  Future<int> updateNote(BookmarkModel bookmarkModel) async {
+    try {
+      final db = await _dbSqlite.db;
+      final affectedRows = await db.update(
+        _newsTable,
+        bookmarkModel.toMap(),
+        where: 'note=?',
+        whereArgs: [
+          bookmarkModel.title,
+        ],
+      );
+      return affectedRows;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  Future<int> deleteNews(int id) async {
     try {
       final db = await _dbSqlite.db;
       final affectedRows = await db.delete(
         _newsTable,
-        where: 'title=?',
-        whereArgs: [title],
+        where: 'idFromTable=?',
+        whereArgs: [id],
       );
       return affectedRows;
     } catch (e) {
