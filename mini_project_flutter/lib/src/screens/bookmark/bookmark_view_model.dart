@@ -5,16 +5,20 @@ import 'package:mini_project_flutter/src/services/news_table_service.dart';
 
 class BookmarkViewModel extends ChangeNotifier {
   Iterable<BookmarkModel> _news = [];
+  String _note = '';
   BookmarkModel? _bookmarkModel;
 
+  String get note => _note;
   BookmarkModel? get mark => _bookmarkModel;
   Iterable<BookmarkModel> get news => _news;
   final NewsTableService _newsTableService = NewsTableService(DbSqlite());
 
-  Future<int> createNews(BookmarkModel news) async {
-    return await _newsTableService.createNews(news);
+  // CREATE
+  Future<int> createNote(BookmarkModel news) async {
+    return await _newsTableService.createNote(news);
   }
 
+  // GET
   Future<Iterable<BookmarkModel>> getNews() async {
     final theNews = await _newsTableService.getNews();
     _news = theNews.toList().reversed;
@@ -22,13 +26,23 @@ class BookmarkViewModel extends ChangeNotifier {
     return theNews;
   }
 
-  Future<int> deleteNews(BookmarkModel bookmarkModel) async {
-    final affectedRows =
-        await _newsTableService.deleteNews(bookmarkModel.title);
+  // UPDATE
+  Future<int> updateNote(BookmarkModel bookmarkModel) async {
+    final affectedRows = await _newsTableService.updateNote(bookmarkModel);
     reloadScreen(bookmarkModel.title);
     return affectedRows;
   }
 
+  // DELETE
+  Future<int> deleteNews(BookmarkModel bookmarkModel) async {
+    final affectedRows =
+        await _newsTableService.deleteNews(bookmarkModel.idFromTable!);
+
+    reloadScreen(bookmarkModel.title);
+    return affectedRows;
+  }
+
+  // SEARCH
   void searchNews(String title, String search) async {
     if (search.isEmpty) {
       getNews();
@@ -48,6 +62,11 @@ class BookmarkViewModel extends ChangeNotifier {
 
   void selectedNews(BookmarkModel mark) {
     _bookmarkModel = mark;
+    notifyListeners();
+  }
+
+  void notes(String notes) {
+    _note = notes;
     notifyListeners();
   }
 }

@@ -9,7 +9,7 @@ class LoadingMax extends StatelessWidget {
     return Center(
       child: Lottie.asset(
         'assets/icons/sports-loading.json',
-        width: 50,
+        width: 80,
       ),
     );
   }

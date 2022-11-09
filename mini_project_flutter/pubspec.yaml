@@ -43,6 +43,7 @@ dependencies:
   path: ^1.8.2
   sqflite_common_ffi: ^2.2.0+1
   lottie: ^1.4.3
+  flutter_svg: ^1.1.6
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +70,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/svg/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

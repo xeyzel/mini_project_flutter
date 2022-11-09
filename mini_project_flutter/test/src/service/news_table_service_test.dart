@@ -24,10 +24,11 @@ void main() {
             author: 'EXAZOR',
             description: 'this is description',
             title: 'this is title',
+            note: 'hai',
             url:
                 'https://sport.detik.com/sepakbola/bola-dunia/d-6386823/ibrahimovic-giroud-harus-masuk-skuad-prancis-di-piala-dunia-2022',
           );
-          final result = await newsTableService.createNews(news);
+          final result = await newsTableService.createNote(news);
           print(result);
         },
       );
@@ -43,7 +44,7 @@ void main() {
       test(
         'Delete News',
         () async {
-          final result = await newsTableService.deleteNews('this is title');
+          final result = await newsTableService.deleteNews(1);
         },
       );
     },

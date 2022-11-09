@@ -6,6 +6,7 @@ import 'package:mini_project_flutter/src/screens/news/news_view_model.dart';
 import 'package:mini_project_flutter/src/screens/detail/detail_news_web_view.dart';
 import 'package:mini_project_flutter/src/screens/widget/components/custom_tag.dart';
 import 'package:mini_project_flutter/src/screens/widget/components/image_container.dart';
+import 'package:mini_project_flutter/src/screens/widget/form_note.dart';
 import 'package:provider/provider.dart';
 
 class ListNews extends StatefulWidget {
@@ -49,26 +50,91 @@ class _ListNewsState extends State<ListNews> {
                     ),
                     IconButton(
                       onPressed: () async {
-                        final markNews = BookmarkModel(
-                          author: news.author,
-                          description: news.description,
-                          title: news.title,
-                          url: news.url,
-                        );
-                        final affectedRows = await context
-                            .read<BookmarkViewModel>()
-                            .createNews(markNews);
-                        if (affectedRows != 1) return;
-                        print(affectedRows);
+                        showDialog(
+                          context: context,
+                          builder: (context) => Dialog(
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                left: 10,
+                                right: 10,
+                              ),
+                              child: SizedBox(
+                                height: 150,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    const SizedBox(height: 14),
+                                    const Text(
+                                      'Apakah anda ingin menambahkan catatan ?',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 20),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        TextButton(
+                                          onPressed: () async {
+                                            final markNews = BookmarkModel(
+                                              author: news.author,
+                                              description: news.description,
+                                              title: news.title,
+                                              url: news.url,
+                                              note: news.description,
+                                            );
+                                            final affectedRows = await context
+                                                .read<BookmarkViewModel>()
+                                                .createNote(markNews);
+                                            if (affectedRows != 1) return;
+                                            print(affectedRows);
 
-                        final snackBar = SnackBar(
-                          content: const Text('Article Saved'),
-                          action: SnackBarAction(
-                            label: 'Close',
-                            onPressed: () {},
+                                            final snackBar = SnackBar(
+                                              content:
+                                                  const Text('Article Saved'),
+                                              action: SnackBarAction(
+                                                label: 'Close',
+                                                onPressed: () {},
+                                              ),
+                                            );
+                                            if (!mounted) return;
+
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(snackBar);
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text('Tidak'),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                            showModalBottomSheet(
+                                              shape:
+                                                  const RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.vertical(
+                                                  top: Radius.circular(20),
+                                                ),
+                                              ),
+                                              backgroundColor:
+                                                  Colors.amber.shade100,
+                                              context: context,
+                                              builder: (context) => FormNote(
+                                                newsModel: news,
+                                              ),
+                                            );
+                                          },
+                                          child: const Text('Ya'),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
                           ),
                         );
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       },
                       icon: Icon(
                         Icons.bookmark_add,
@@ -79,7 +145,7 @@ class _ListNewsState extends State<ListNews> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 150),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

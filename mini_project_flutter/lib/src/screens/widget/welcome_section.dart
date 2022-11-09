@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mini_project_flutter/src/models/news/news_model.dart';
 import 'package:mini_project_flutter/src/screens/detail/detail_news_web_view.dart';
 import 'package:mini_project_flutter/src/screens/home/navbar_setter/home_navbar.dart';
+import 'package:mini_project_flutter/src/screens/home/navbar_setter/navbar_view_model.dart';
 import 'package:mini_project_flutter/src/screens/news/news_screen.dart';
 import 'dart:math';
 import 'package:mini_project_flutter/src/screens/news/news_view_model.dart';
@@ -76,27 +77,7 @@ class _WelcomeSectionState extends State<WelcomeSection> {
                 ),
                 TextButton(
                   onPressed: () {
-                    context.read<NewsViewModel>().selectedNews(newsPage);
-
-                    Navigator.push(
-                      context,
-                      PageRouteBuilder(
-                        transitionsBuilder:
-                            (context, animation, secondaryAnimation, child) {
-                          return SlideTransition(
-                            position: animation.drive(
-                              Tween(
-                                  begin: const Offset(1.0, 0.0),
-                                  end: Offset.zero),
-                            ),
-                            child: child,
-                          );
-                        },
-                        pageBuilder: (context, animation, secondaryAnimation) {
-                          return const NewsScreen();
-                        },
-                      ),
-                    );
+                    context.read<NavbarViewModel>().tapIndex(1);
                   },
                   child: const Text('Lihat'),
                 ),
@@ -174,8 +155,10 @@ class LatestNews extends StatelessWidget {
                 child: Column(
                   children: [
                     ImageContainer(
+                      height: 110,
                       width: MediaQuery.of(context).size.width * 0.5,
                       imageUrl: news.urlToImage,
+                      child: const SizedBox(),
                     ),
                     const SizedBox(height: 10),
                     Text(
