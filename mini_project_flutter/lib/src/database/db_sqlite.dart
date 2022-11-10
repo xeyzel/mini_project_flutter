@@ -18,7 +18,7 @@ class DbSqlite {
 
   initialDatabase() async {
     String databasePath = await getDatabasesPath();
-    String path = join(databasePath, 'play_ground_v4.db');
+    String path = join(databasePath, 'play_ground_v5.db');
     Database myDatabase = await openDatabase(
       path,
       version: 1,

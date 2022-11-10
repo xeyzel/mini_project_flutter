@@ -7,7 +7,9 @@ class BookmarkViewModel extends ChangeNotifier {
   Iterable<BookmarkModel> _news = [];
   String _note = '';
   BookmarkModel? _bookmarkModel;
+  bool _isFilter = false;
 
+  bool get isFilter => _isFilter;
   String get note => _note;
   BookmarkModel? get mark => _bookmarkModel;
   Iterable<BookmarkModel> get news => _news;
@@ -53,6 +55,24 @@ class BookmarkViewModel extends ChangeNotifier {
       (news) => news.title.toLowerCase().contains(search.toLowerCase()),
     );
     _news = searchNews;
+    notifyListeners();
+  }
+
+  void searchNewsByNote(String search) async {
+    if (search.isEmpty) {
+      getNews();
+      return;
+    }
+    final theNews = await _newsTableService.getNews();
+    final searchNews = theNews.where(
+      (news) => news.note!.toLowerCase().contains(search.toLowerCase()),
+    );
+    _news = searchNews;
+    notifyListeners();
+  }
+
+  void filterBy(bool value) async {
+    _isFilter = value;
     notifyListeners();
   }
 

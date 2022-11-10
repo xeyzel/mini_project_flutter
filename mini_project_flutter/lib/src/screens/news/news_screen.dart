@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mini_project_flutter/src/screens/news/news_view_model.dart';
 import 'package:mini_project_flutter/src/screens/widget/drawer_max.dart';
-import 'package:mini_project_flutter/src/screens/widget/list_news.dart';
+import 'package:mini_project_flutter/src/screens/news/widget/list_news.dart';
 import 'package:mini_project_flutter/src/screens/widget/status/error_max.dart';
 import 'package:mini_project_flutter/src/screens/widget/status/loading_max.dart';
 import 'package:provider/provider.dart';

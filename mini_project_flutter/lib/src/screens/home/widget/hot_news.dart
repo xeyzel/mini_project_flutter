@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mini_project_flutter/src/screens/detail/detail_news_web_view.dart';
 import 'package:mini_project_flutter/src/screens/news/news_view_model.dart';
-import 'package:mini_project_flutter/src/screens/widget/components/custom_tag.dart';
-import 'package:mini_project_flutter/src/screens/widget/components/image_container.dart';
-import 'package:mini_project_flutter/src/screens/widget/welcome_section.dart';
+import 'package:mini_project_flutter/src/screens/widget/custom_tag.dart';
+import 'package:mini_project_flutter/src/screens/widget/image_container.dart';
+import 'package:mini_project_flutter/src/screens/home/widget/welcome_section.dart';
 import 'package:provider/provider.dart';
 
 class HotNews extends StatelessWidget {

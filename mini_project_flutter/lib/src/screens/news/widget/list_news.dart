@@ -4,9 +4,9 @@ import 'package:mini_project_flutter/src/models/news/news_model.dart';
 import 'package:mini_project_flutter/src/screens/bookmark/bookmark_view_model.dart';
 import 'package:mini_project_flutter/src/screens/news/news_view_model.dart';
 import 'package:mini_project_flutter/src/screens/detail/detail_news_web_view.dart';
-import 'package:mini_project_flutter/src/screens/widget/components/custom_tag.dart';
-import 'package:mini_project_flutter/src/screens/widget/components/image_container.dart';
-import 'package:mini_project_flutter/src/screens/widget/form_note.dart';
+import 'package:mini_project_flutter/src/screens/widget/custom_tag.dart';
+import 'package:mini_project_flutter/src/screens/widget/image_container.dart';
+import 'package:mini_project_flutter/src/screens/news/widget/form_note.dart';
 import 'package:provider/provider.dart';
 
 class ListNews extends StatefulWidget {
@@ -45,6 +45,7 @@ class _ListNewsState extends State<ListNews> {
                       children: [
                         Text(
                           news.source.name,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -66,9 +67,10 @@ class _ListNewsState extends State<ListNews> {
                                     const SizedBox(height: 14),
                                     const Text(
                                       'Apakah anda ingin menambahkan catatan ?',
+                                      textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 18,
                                       ),
                                     ),
                                     const SizedBox(height: 20),
@@ -104,7 +106,10 @@ class _ListNewsState extends State<ListNews> {
                                                 .showSnackBar(snackBar);
                                             Navigator.pop(context);
                                           },
-                                          child: const Text('Tidak'),
+                                          child: const Text(
+                                            'Tidak',
+                                            style: TextStyle(color: Colors.red),
+                                          ),
                                         ),
                                         TextButton(
                                           onPressed: () {
@@ -222,19 +227,19 @@ class _ListNewsState extends State<ListNews> {
     return [
       const Shadow(
         offset: Offset(-1.5, -1.5),
-        color: Colors.black38,
+        color: Colors.black45,
       ),
       const Shadow(
         offset: Offset(1.5, -1.5),
-        color: Colors.black38,
+        color: Colors.black45,
       ),
       const Shadow(
         offset: Offset(1.5, 1.5),
-        color: Colors.black38,
+        color: Colors.black45,
       ),
       const Shadow(
         offset: Offset(-1.5, 1.5),
-        color: Colors.black38,
+        color: Colors.black45,
       ),
     ];
   }

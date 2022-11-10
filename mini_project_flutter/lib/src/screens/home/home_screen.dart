@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:mini_project_flutter/src/screens/news/news_view_model.dart';
-
 import 'package:mini_project_flutter/src/screens/widget/drawer_max.dart';
 import 'package:mini_project_flutter/src/screens/widget/status/error_max.dart';
 import 'package:mini_project_flutter/src/screens/widget/status/loading_max.dart';
-import 'package:mini_project_flutter/src/screens/widget/welcome_section.dart';
+import 'package:mini_project_flutter/src/screens/home/widget/welcome_section.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {

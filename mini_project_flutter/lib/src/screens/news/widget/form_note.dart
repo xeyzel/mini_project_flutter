@@ -4,7 +4,6 @@ import 'package:mini_project_flutter/src/models/bookmark/bookmark_model.dart';
 import 'package:mini_project_flutter/src/models/news/news_model.dart';
 import 'package:mini_project_flutter/src/screens/bookmark/bookmark_view_model.dart';
 import 'package:mini_project_flutter/src/screens/home/navbar_setter/navbar_view_model.dart';
-import 'package:mini_project_flutter/src/screens/news/news_view_model.dart';
 import 'package:provider/provider.dart';
 
 class FormNote extends StatefulWidget {
