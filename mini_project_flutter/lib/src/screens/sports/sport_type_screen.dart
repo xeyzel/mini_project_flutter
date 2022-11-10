@@ -1,4 +1,10 @@
-import 'setting/setting.dart';
+import 'package:flutter/material.dart';
+import 'package:mini_project_flutter/src/screens/sports/sport_type_view_model.dart';
+import 'package:mini_project_flutter/src/screens/widget/drawer_max.dart';
+import 'package:mini_project_flutter/src/screens/widget/status/error_max.dart';
+import 'package:mini_project_flutter/src/screens/sports/widget/list_sports.dart';
+import 'package:mini_project_flutter/src/screens/widget/status/loading_max.dart';
+import 'package:provider/provider.dart';
 
 class SportTypeScreen extends StatefulWidget {
   static const route = '/sport';

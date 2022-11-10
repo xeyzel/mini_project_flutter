@@ -7,7 +7,6 @@ import 'package:mini_project_flutter/src/screens/news/news_screen.dart';
 import 'package:mini_project_flutter/src/screens/news/news_view_model.dart';
 import 'package:mini_project_flutter/src/screens/sports/sport_type_screen.dart';
 import 'package:mini_project_flutter/src/screens/sports/sport_type_view_model.dart';
-
 import 'package:provider/provider.dart';
 
 class App extends StatelessWidget {

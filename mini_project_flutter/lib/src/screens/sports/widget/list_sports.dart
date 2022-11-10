@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_project_flutter/src/models/sport/sport_model.dart';
 import 'package:mini_project_flutter/src/screens/detail/detail_sport_screen.dart';
-import 'package:mini_project_flutter/src/screens/sports/setting/setting.dart';
 import 'package:mini_project_flutter/src/screens/sports/sport_type_view_model.dart';
+import 'package:mini_project_flutter/src/screens/widget/status/loading_max.dart';
 import 'package:provider/provider.dart';
 
 class ListSports extends StatelessWidget {

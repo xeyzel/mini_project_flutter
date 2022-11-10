@@ -3,15 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:mini_project_flutter/src/models/news/news_model.dart';
 import 'package:mini_project_flutter/src/screens/detail/detail_news_web_view.dart';
-import 'package:mini_project_flutter/src/screens/home/navbar_setter/home_navbar.dart';
 import 'package:mini_project_flutter/src/screens/home/navbar_setter/navbar_view_model.dart';
-import 'package:mini_project_flutter/src/screens/news/news_screen.dart';
 import 'dart:math';
 import 'package:mini_project_flutter/src/screens/news/news_view_model.dart';
-
-import 'package:mini_project_flutter/src/screens/widget/components/image_container.dart';
-import 'package:mini_project_flutter/src/screens/widget/hot_news.dart';
-import 'package:mini_project_flutter/src/screens/widget/list_news.dart';
+import 'package:mini_project_flutter/src/screens/widget/image_container.dart';
+import 'package:mini_project_flutter/src/screens/home/widget/hot_news.dart';
 import 'package:provider/provider.dart';
 
 class WelcomeSection extends StatefulWidget {

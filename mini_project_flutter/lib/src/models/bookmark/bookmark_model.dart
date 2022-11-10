@@ -38,6 +38,7 @@ class BookmarkModel {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
+    map['idFromTable'] = idFromTable;
     map['author'] = author;
     map['url'] = url;
     map['title'] = title;

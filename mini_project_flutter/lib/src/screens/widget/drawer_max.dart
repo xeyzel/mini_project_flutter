@@ -36,7 +36,7 @@ class DrawerMax extends StatelessWidget {
                             ),
                             backgroundColor: Colors.teal.shade200,
                             context: context,
-                            builder: (context) => AboutScreen(),
+                            builder: (context) => const AboutScreen(),
                           );
                         },
                         child: const Padding(

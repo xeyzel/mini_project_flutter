@@ -14,7 +14,7 @@ class AboutScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: const [
             Text(
-              'Aplikasi ini aplikasi untuk melihat berita seputar olahraga',
+              'Aplikasi ini berfungsi untuk melihat berita seputar olahraga',
               style: TextStyle(
                 fontSize: 25,
               ),
@@ -24,7 +24,6 @@ class AboutScreen extends StatelessWidget {
               'COPYRIGHT © 2022 Xeyzel, All rights Reserved',
               style: TextStyle(
                 fontSize: 15,
-                // fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center,
             ),

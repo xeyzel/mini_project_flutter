@@ -5,7 +5,6 @@ import 'package:mini_project_flutter/src/screens/home/navbar_setter/navbar_view_
 import 'package:mini_project_flutter/src/screens/news/news_screen.dart';
 import 'package:mini_project_flutter/src/screens/sports/sport_type_screen.dart';
 import 'package:mini_project_flutter/src/screens/widget/drawer_max.dart';
-import '../navbar_setter/home_navbar.dart';
 import 'package:provider/provider.dart';
 
 class HomeNavbar extends StatefulWidget {

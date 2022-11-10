@@ -39,9 +39,9 @@ class NewsTableService {
       final affectedRows = await db.update(
         _newsTable,
         bookmarkModel.toMap(),
-        where: 'note=?',
+        where: 'idFromTable=?',
         whereArgs: [
-          bookmarkModel.title,
+          bookmarkModel.idFromTable,
         ],
       );
       return affectedRows;
