@@ -90,8 +90,6 @@ class _ListNewsState extends State<ListNews> {
                                                 .read<BookmarkViewModel>()
                                                 .createNote(markNews);
                                             if (affectedRows != 1) return;
-                                            print(affectedRows);
-
                                             final snackBar = SnackBar(
                                               content:
                                                   const Text('Article Saved'),
