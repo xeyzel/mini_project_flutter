@@ -37,9 +37,10 @@ class App extends StatelessWidget {
           primarySwatch: Colors.cyan,
           useMaterial3: true,
         ),
-        initialRoute: SplashScreen.route,
+        // initialRoute: SplashScreen.route,
+        home: const SplashScreen(),
         routes: {
-          SplashScreen.route: (context) => const SplashScreen(),
+          // SplashScreen.route: (context) => const SplashScreen(),
           HomeNavbar.route: (context) => const HomeNavbar(),
           NewsScreen.route: (context) => const NewsScreen(),
           SportTypeScreen.route: (context) => const SportTypeScreen(),

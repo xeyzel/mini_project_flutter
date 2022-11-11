@@ -8,7 +8,7 @@ import 'package:mini_project_flutter/src/screens/widget/drawer_max.dart';
 import 'package:provider/provider.dart';
 
 class HomeNavbar extends StatefulWidget {
-  static const route = '/navbar';
+  static const route = '/homeNavbar';
   const HomeNavbar({super.key});
 
   @override
@@ -16,8 +16,6 @@ class HomeNavbar extends StatefulWidget {
 }
 
 class _HomeNavbarState extends State<HomeNavbar> {
-  // int _selectedIndex = 0;
-
   void _onItemTap(int index) {
     context.read<NavbarViewModel>().tapIndex(index);
   }

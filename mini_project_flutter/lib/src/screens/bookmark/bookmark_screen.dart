@@ -192,7 +192,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                                 onPressed: () async {
                                   mark.note = _noteController.text;
 
-                                  final affectedRows = await context
+                                  await context
                                       .read<BookmarkViewModel>()
                                       .updateNote(mark);
 
@@ -333,10 +333,9 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                                     ),
                                     TextButton(
                                       onPressed: () async {
-                                        final affectedRows = await context
+                                        await context
                                             .read<BookmarkViewModel>()
                                             .deleteNews(mark);
-                                        print(affectedRows);
                                         final snackBar = SnackBar(
                                           content:
                                               const Text('Article Removed'),

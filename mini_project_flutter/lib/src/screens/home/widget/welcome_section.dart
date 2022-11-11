@@ -52,7 +52,6 @@ class _WelcomeSectionState extends State<WelcomeSection> {
   Widget build(BuildContext context) {
     return Consumer<NewsViewModel>(
       builder: (context, value, child) {
-        final newsPage = widget.sportNews.elementAt(newsIndex);
         return ListView(
           physics: const BouncingScrollPhysics(),
           children: [
