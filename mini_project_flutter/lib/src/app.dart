@@ -17,18 +17,10 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (context) => SportViewModel(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => NewsViewModel(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => BookmarkViewModel(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => NavbarViewModel(),
-        )
+        ChangeNotifierProvider(create: (context) => SportViewModel()),
+        ChangeNotifierProvider(create: (context) => NewsViewModel()),
+        ChangeNotifierProvider(create: (context) => BookmarkViewModel()),
+        ChangeNotifierProvider(create: (context) => NavbarViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -37,10 +29,8 @@ class App extends StatelessWidget {
           primarySwatch: Colors.cyan,
           useMaterial3: true,
         ),
-        // initialRoute: SplashScreen.route,
         home: const SplashScreen(),
         routes: {
-          // SplashScreen.route: (context) => const SplashScreen(),
           HomeNavbar.route: (context) => const HomeNavbar(),
           NewsScreen.route: (context) => const NewsScreen(),
           SportTypeScreen.route: (context) => const SportTypeScreen(),
