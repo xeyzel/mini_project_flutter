@@ -84,7 +84,6 @@ class _FormNoteState extends State<FormNote> {
                 TextButton(
                   onPressed: () {
                     if (_notes.text.isEmpty) return;
-
                     Navigator.of(context).pop();
                     final BookmarkModel bookmark = BookmarkModel(
                       author: news.author,

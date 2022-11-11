@@ -22,6 +22,10 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
     context.read<BookmarkViewModel>().reloadScreen(news.toString());
   }
 
+  void _clearScreen() {
+    _noteController.clear();
+  }
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -177,6 +181,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                               TextButton(
                                 onPressed: () {
                                   Navigator.pop(context);
+                                  _clearScreen();
                                 },
                                 child: const Text(
                                   'Tidak',
@@ -187,12 +192,13 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                                 onPressed: () async {
                                   mark.note = _noteController.text;
 
-                                  final affectedRows = await context
+                                  await context
                                       .read<BookmarkViewModel>()
                                       .updateNote(mark);
 
-                                  print(affectedRows);
+                                  if (!mounted) return;
                                   Navigator.pop(context);
+                                  _clearScreen();
                                 },
                                 child: const Text('Ya'),
                               ),
@@ -327,10 +333,9 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                                     ),
                                     TextButton(
                                       onPressed: () async {
-                                        final affectedRows = await context
+                                        await context
                                             .read<BookmarkViewModel>()
                                             .deleteNews(mark);
-                                        print(affectedRows);
                                         final snackBar = SnackBar(
                                           content:
                                               const Text('Article Removed'),

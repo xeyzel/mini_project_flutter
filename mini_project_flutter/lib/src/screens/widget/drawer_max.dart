@@ -28,16 +28,37 @@ class DrawerMax extends StatelessWidget {
                       width: double.infinity,
                       child: InkWell(
                         onTap: () {
-                          showModalBottomSheet(
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(20),
-                              ),
+                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            PageRouteBuilder(
+                              transitionsBuilder: (context, animation,
+                                  secondaryAnimation, child) {
+                                return SlideTransition(
+                                  position: animation.drive(
+                                    Tween(
+                                        begin: const Offset(1.0, 0.0),
+                                        end: Offset.zero),
+                                  ),
+                                  child: child,
+                                );
+                              },
+                              pageBuilder:
+                                  (context, animation, secondaryAnimation) {
+                                return const AboutScreen();
+                              },
                             ),
-                            backgroundColor: Colors.teal.shade200,
-                            context: context,
-                            builder: (context) => const AboutScreen(),
                           );
+                          // showModalBottomSheet(
+                          //   shape: const RoundedRectangleBorder(
+                          //     borderRadius: BorderRadius.vertical(
+                          //       top: Radius.circular(20),
+                          //     ),
+                          //   ),
+                          //   backgroundColor: Colors.teal.shade200,
+                          //   context: context,
+                          //   builder: (context) => const AboutScreen(),
+                          // );
                         },
                         child: const Padding(
                           padding: EdgeInsets.all(6),
