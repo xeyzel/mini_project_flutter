@@ -5,6 +5,7 @@ import 'package:mini_project_flutter/src/screens/home/navbar_setter/home_navbar.
 import 'package:mini_project_flutter/src/screens/home/navbar_setter/navbar_view_model.dart';
 import 'package:mini_project_flutter/src/screens/news/news_screen.dart';
 import 'package:mini_project_flutter/src/screens/news/news_view_model.dart';
+import 'package:mini_project_flutter/src/screens/splash/splash_screen.dart';
 import 'package:mini_project_flutter/src/screens/sports/sport_type_screen.dart';
 import 'package:mini_project_flutter/src/screens/sports/sport_type_view_model.dart';
 import 'package:provider/provider.dart';
@@ -31,13 +32,14 @@ class App extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'X-Sport',
         theme: ThemeData(
           primarySwatch: Colors.cyan,
           useMaterial3: true,
         ),
-        initialRoute: HomeNavbar.route,
+        initialRoute: SplashScreen.route,
         routes: {
+          SplashScreen.route: (context) => const SplashScreen(),
           HomeNavbar.route: (context) => const HomeNavbar(),
           NewsScreen.route: (context) => const NewsScreen(),
           SportTypeScreen.route: (context) => const SportTypeScreen(),
