@@ -18,8 +18,6 @@ class ListNews extends StatefulWidget {
 }
 
 class _ListNewsState extends State<ListNews> {
-  bool isAdd = false;
-
   @override
   Widget build(BuildContext context) {
     return Consumer<NewsViewModel>(builder: (context, value, child) {
@@ -102,6 +100,7 @@ class _ListNewsState extends State<ListNews> {
 
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(snackBar);
+
                                             Navigator.pop(context);
                                           },
                                           child: const Text(
@@ -123,9 +122,8 @@ class _ListNewsState extends State<ListNews> {
                                               backgroundColor:
                                                   Colors.amber.shade100,
                                               context: context,
-                                              builder: (context) => FormNote(
-                                                newsModel: news,
-                                              ),
+                                              builder: (context) =>
+                                                  FormNote(newsModel: news),
                                             );
                                           },
                                           child: const Text('Ya'),
@@ -141,7 +139,7 @@ class _ListNewsState extends State<ListNews> {
                       },
                       icon: Icon(
                         Icons.bookmark_add,
-                        color: Colors.amber,
+                        color: Colors.white,
                         shadows: shadows,
                         size: 35,
                       ),

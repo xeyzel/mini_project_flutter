@@ -18,7 +18,7 @@ class _NewsWebViewScreenState extends State<NewsWebViewScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('NEWS'),
+        title: Text(newsList.news!.title),
       ),
       body: WebViewX(
         initialContent: newsList.news!.url,

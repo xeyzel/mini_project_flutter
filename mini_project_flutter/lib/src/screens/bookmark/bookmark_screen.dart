@@ -5,6 +5,7 @@ import 'package:mini_project_flutter/src/screens/bookmark/bookmark_view_model.da
 import 'package:mini_project_flutter/src/screens/detail/detail_bookmark.dart';
 import 'package:mini_project_flutter/src/screens/widget/drawer_max.dart';
 import 'package:provider/provider.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 class BookmarkScreen extends StatefulWidget {
   const BookmarkScreen({super.key});
@@ -15,6 +16,7 @@ class BookmarkScreen extends StatefulWidget {
 
 class _BookmarkScreenState extends State<BookmarkScreen> {
   final _noteController = TextEditingController();
+  int initialIndex = 0;
 
   void _initial() async {
     final news = await context.read<BookmarkViewModel>().getNews();
@@ -75,15 +77,9 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                 padding: const EdgeInsets.all(16.0),
                 child: Row(
                   children: [
-                    Consumer<BookmarkViewModel>(
-                      builder: (context, viewModel, child) {
-                        return Switch(
-                          value: viewModel.isFilter,
-                          onChanged: (value) {
-                            viewModel.filterBy(value);
-                          },
-                        );
-                      },
+                    const Icon(
+                      Icons.search,
+                      size: 25,
                     ),
                     const SizedBox(width: 16),
                     Expanded(
@@ -101,16 +97,43 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                             },
                             decoration: const InputDecoration(
                               hintText: 'Search',
-                              border: OutlineInputBorder(),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(20),
+                                ),
+                              ),
                             ),
                           );
                         },
                       ),
                     ),
                     const SizedBox(width: 16),
-                    const Icon(
-                      Icons.search,
-                      size: 25,
+                    Consumer<BookmarkViewModel>(
+                      builder: (context, viewModel, child) {
+                        // return ToggleSwitch(
+                        //   isVertical: true,
+                        //   initialLabelIndex: initialIndex,
+                        //   totalSwitches: 2,
+                        //   activeFgColor: Colors.white,
+                        //   labels: const ['Title', 'Note'],
+                        //   onToggle: (index) {
+                        //     setState(() {
+                        //       initialIndex = index!;
+                        //       if (initialIndex != 1) {
+                        //         final value = viewModel.isFilter;
+                        //         viewModel.filterBy(value);
+                        //       }
+                        //     });
+                        //     print('switched to: $index');
+                        //   },
+                        // );
+                        return Switch(
+                          value: viewModel.isFilter,
+                          onChanged: (value) {
+                            viewModel.filterBy(value);
+                          },
+                        );
+                      },
                     ),
                   ],
                 ),
